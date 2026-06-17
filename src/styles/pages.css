@@ -40,6 +40,25 @@
   margin-top: 2.5rem;
 }
 
+/* "Go back" link — full-width with the page gutter, aligned bottom-right so it
+   sits flush with the content column on every page. */
+.BackLink {
+  padding: 0 var(--page-margin);
+  margin: 2.5rem 0 4rem;
+  text-align: right;
+}
+
+.BackLink--link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.BackLink--arrow {
+  display: inline-flex;
+  transform: rotate(180deg);
+}
+
 /* --- Exhibitions grid ---------------------------------------------------- */
 .ExhibitionGrid {
   list-style: none;

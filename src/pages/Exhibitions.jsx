@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Breadcrumb from '../components/Breadcrumb.jsx';
+import BackLink from '../components/BackLink.jsx';
 import { exhibitions } from './exhibitions-data.js';
 
 /** Grid of all current exhibitions (route: "/exhibitions"). */
@@ -35,6 +36,8 @@ export default function Exhibitions() {
           </ul>
         </div>
       </section>
+
+      <BackLink to="/" label="Home" />
     </main>
   );
 }

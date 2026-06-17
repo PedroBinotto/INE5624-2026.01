@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Breadcrumb from '../components/Breadcrumb.jsx';
+import BackLink from '../components/BackLink.jsx';
 
 const MUSEUM = { lat: 47.3745896, lng: 8.5486629 };
 const OSM_EMBED =
@@ -75,6 +76,8 @@ export default function Accessibility() {
           </div>
         </div>
       </section>
+
+      <BackLink to="/" label="Home" />
     </main>
   );
 }

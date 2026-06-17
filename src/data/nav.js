@@ -4,14 +4,11 @@
 // "*" route (NotImplemented), which derives its title from the path.
 
 export const mainNav = [
-  {
-    label: 'Visitor Information',
-    to: '/',
-    children: [
-      { label: 'Schedule visit', to: '/schedule-visit' },
-      { label: 'Accessibility', to: '/accessibility' },
-    ],
-  },
+  // "Visitor Information" is flattened: it and its former sub-items are all
+  // top-level entries (no dropdown).
+  { label: 'Visitor Information', to: '/' },
+  { label: 'Schedule visit', to: '/schedule-visit' },
+  { label: 'Accessibility', to: '/accessibility' },
   { label: 'Exhibitions', to: '/exhibitions' },
   { label: 'Agenda (in German)', to: '/agenda' },
   { label: 'Schools', to: '/schools' },

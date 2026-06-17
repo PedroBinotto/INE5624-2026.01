@@ -1,5 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Breadcrumb from '../components/Breadcrumb.jsx';
+import BackLink from '../components/BackLink.jsx';
 
 const humanize = (seg) =>
   seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
@@ -22,12 +23,11 @@ export default function NotImplemented() {
           <div className="TextImage--content richtext">
             <p>This section is part of the navigation scaffold but doesn’t have
             content yet (<code>{pathname}</code>).</p>
-            <p>
-              <Link className="Link size-small" to="/">Back to Visitor Information</Link>
-            </p>
           </div>
         </div>
       </section>
+
+      <BackLink to="/" label="Home" />
     </main>
   );
 }

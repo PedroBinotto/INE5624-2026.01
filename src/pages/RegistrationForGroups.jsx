@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Breadcrumb from '../components/Breadcrumb.jsx';
+import BackLink from '../components/BackLink.jsx';
 import { exhibitions } from './exhibitions-data.js';
 
 const EMPTY = {
@@ -145,6 +146,8 @@ export default function RegistrationForGroups() {
           </form>
         </div>
       </section>
+
+      <BackLink to="/" label="Home" />
 
       {confirmed && <ConfirmDialog email={form.repEmail} />}
     </main>

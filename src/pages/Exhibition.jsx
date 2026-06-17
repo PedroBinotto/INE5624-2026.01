@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import Breadcrumb from '../components/Breadcrumb.jsx';
+import BackLink from '../components/BackLink.jsx';
 import { getExhibition, exhibitions } from './exhibitions-data.js';
 
 /** A single exhibition detail page (route: "/exhibitions/:slug"). */
@@ -13,11 +14,10 @@ export default function Exhibition() {
         <section className="ContentArea">
           <div className="Page">
             <h1 className="Intro--title richtext">Exhibition not found</h1>
-            <p className="Page--lead richtext">
-              We couldn’t find that exhibition. <Link className="Link size-small" to="/exhibitions">Back to all exhibitions</Link>
-            </p>
+            <p className="Page--lead richtext">We couldn’t find that exhibition.</p>
           </div>
         </section>
+        <BackLink to="/exhibitions" label="Exhibitions" />
       </main>
     );
   }
@@ -52,11 +52,9 @@ export default function Exhibition() {
           <div className="TextImage--content richtext">
             {ex.body.map((p, i) => <p key={i}>{p}</p>)}
           </div>
-
-          <p className="Page--back">
-            <Link className="Link size-small" to="/exhibitions">All exhibitions</Link>
-          </p>
         </div>
+
+        <BackLink to="/exhibitions" label="Exhibitions" />
       </section>
 
       <section className="RelatedArea">
