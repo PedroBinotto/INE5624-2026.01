@@ -1,0 +1,41 @@
+ATTRS:
+
+
+        (function(url, revision) {
+            function init(delayed) {
+                var svgEl = document.getElementById('svgsprite');
+                svgEl && svgEl.parentNode.removeChild(svgEl);
+
+                var svg = storage.svgicons.replace('<svg ', '<svg id="svgsprite" style="display: none"');
+                document.body.insertAdjacentHTML('beforeend', svg);
+            }
+
+            function fetchSprite(path, callback) {
+                var httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = function() {
+                    if (httpRequest.readyState === 4 && httpRequest.status === 200 && callback) {
+                        callback(httpRequest.responseText);
+                    }
+                };
+                httpRequest.open('GET', path);
+                httpRequest.send();
+            }
+
+            var storage = window.localStorage || {};
+
+            if (!storage.svgicons || storage.svgicons_revision != revision) {
+                fetchSprite(url, function(data) {
+                    storage.svgicons = data;
+                    storage.svgicons_revision = revision;
+
+                    init(true);
+                });
+            }
+
+            if (storage.svgicons) {
+                init();
+            }
+        })("/.resources/uzh-wcms-frontend/2.10.0/assets/icons/sprite.svg", "b36a0d20815810cb45c1cdffa4d31e36");
+
+        // Important for backend implementation: The revision (second parameter) should change whenever the svg sprite changes, e.g. you can use the modification timestamp of the svg file.
+    

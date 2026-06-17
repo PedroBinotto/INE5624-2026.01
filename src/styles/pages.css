@@ -1,0 +1,239 @@
+/* Styles for the scaffolded pages. These build on the site's existing design
+   tokens (--page-margin, --c-blue, --c-black, --c-text-grey, etc.) so the new
+   pages sit visually next to the recovered ones. */
+
+/* Full-width wrapper that centers a max ~1240px column, mirroring the site's
+   own .MasonryGridWrapper. `--page-margin` is the viewport→column gutter, so it
+   must be used as padding on a full-width element — NOT combined with
+   max-width + margin:auto, which would double-center and collapse the content. */
+.Page {
+  padding: 2.5rem var(--page-margin) 5rem;
+}
+
+/* The original stylesheet hides the breadcrumb (visibility:hidden) and the
+   remote main.js revealed it after measuring overflow for horizontal scroll.
+   We don't ship that script, so reveal it directly. */
+.Breadcrumb {
+  visibility: visible;
+}
+
+/* The breadcrumb's list uses full-bleed margins (calc(50% - 720px)) that assume
+   it spans the whole viewport — true on the home page, but our content pages
+   nest it inside the padded `.Page` column, where those margins go negative and
+   the overflow:hidden box clips the start of the trail. Inside `.Page`, align
+   the list to the column edge instead. */
+.Page .Breadcrumb--list {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.Page .Breadcrumb--list--item:last-child {
+  padding-right: 0;
+}
+
+.Page--lead {
+  max-width: 46rem;
+  margin-bottom: 2.5rem;
+}
+
+.Page--back {
+  margin-top: 2.5rem;
+}
+
+/* --- Exhibitions grid ---------------------------------------------------- */
+.ExhibitionGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.ExhibitionGrid--heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(var(--c-black), 1);
+  margin: 0 0 1.5rem;
+}
+
+.ExhibitionCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(var(--c-white), 1);
+}
+
+.ExhibitionCard--image {
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+.ExhibitionCard--img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.ExhibitionCard:hover .ExhibitionCard--img,
+.ExhibitionCard:focus-visible .ExhibitionCard--img {
+  transform: scale(1.04);
+}
+
+.ExhibitionCard--body {
+  padding: 1rem 0 0;
+}
+
+.ExhibitionCard--meta {
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(var(--c-text-grey), 1);
+  margin: 0 0 0.5rem;
+}
+
+.ExhibitionCard--title {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: rgba(var(--c-black), 1);
+  margin: 0 0 0.5rem;
+}
+
+.ExhibitionCard--teaser {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(var(--c-text-grey), 1);
+  margin: 0 0 1rem;
+}
+
+.ExhibitionCard--more {
+  color: rgba(var(--c-blue), 1);
+}
+
+/* --- Accessibility two-column ------------------------------------------- */
+.TwoCol {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.TwoCol--text h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(var(--c-black), 1);
+  margin: 2rem 0 0.5rem;
+}
+
+.TwoCol--map {
+  padding-top: 0.5rem;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.MapEmbed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: rgba(var(--c-grey, 240, 240, 240), 1);
+  overflow: hidden;
+}
+
+.MapEmbed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.MapEmbed--caption {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .TwoCol {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .TwoCol--map {
+    position: static;
+  }
+}
+
+/* --- Form tweaks --------------------------------------------------------- */
+.FormField {
+  margin-bottom: 1.5rem;
+}
+
+.Form--row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.Form--row .FormField {
+  margin-bottom: 1.5rem;
+}
+
+.FormField--required {
+  color: rgba(var(--c-blue), 1);
+}
+
+.FormCheckbox {
+  margin: 0.5rem 0 1.5rem;
+}
+
+.FormCheckbox .FormLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+textarea.Input {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.Button--secondary {
+  margin-left: 1rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+  .Form--row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Not implemented ----------------------------------------------------- */
+.NotImplemented {
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 8rem;
+}
+
+.NotImplemented--tag {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(var(--c-blue), 1);
+  margin-bottom: 0.5rem;
+}
+
+.NotImplemented .TextImage--content {
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.NotImplemented code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
