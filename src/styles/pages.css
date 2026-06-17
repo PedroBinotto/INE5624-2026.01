@@ -167,33 +167,17 @@
   }
 }
 
-/* --- Form tweaks --------------------------------------------------------- */
+/* --- Registration form: panel layout ------------------------------------ */
 .FormField {
   margin-bottom: 1.5rem;
 }
 
-.Form--row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.Form--row .FormField {
-  margin-bottom: 1.5rem;
+.FormField:last-child {
+  margin-bottom: 0;
 }
 
 .FormField--required {
   color: rgba(var(--c-blue), 1);
-}
-
-.FormCheckbox {
-  margin: 0.5rem 0 1.5rem;
-}
-
-.FormCheckbox .FormLabel {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 textarea.Input {
@@ -201,13 +185,162 @@ textarea.Input {
   min-height: 6rem;
 }
 
-.Button--secondary {
-  margin-left: 1rem;
-  opacity: 0.7;
+/* Two columns: panels 1–3 on the left, 4–5 on the right. */
+.RegForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
 }
 
-@media (max-width: 700px) {
-  .Form--row {
+.RegForm--col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+/* Panel card (also resets the <fieldset> defaults). */
+.RegPanel {
+  margin: 0;
+  padding: 1.75rem;
+  min-width: 0;
+  border: 1px solid rgba(var(--c-black), 0.12);
+  background: rgba(var(--c-white), 1);
+}
+
+.RegPanel--title {
+  display: contents;
+  float: none;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: rgba(var(--c-black), 1);
+}
+
+.RegPanel--row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.RegPanel--terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(var(--c-text-grey), 1);
+}
+
+.RegPanel--terms input {
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Live recap (definition list). */
+.Recap {
+  margin: 0 0 0.5rem;
+}
+
+.Recap--row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(var(--c-black), 0.08);
+  font-size: 0.9375rem;
+}
+
+.Recap--label {
+  color: rgba(var(--c-text-grey), 1);
+}
+
+.Recap--value {
+  margin: 0;
+  text-align: right;
+  font-weight: 600;
+  color: rgba(var(--c-black), 1);
+  overflow-wrap: anywhere;
+}
+
+.Recap--empty {
+  font-weight: 400;
+  color: rgba(var(--c-text-grey), 0.6);
+}
+
+.Button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --- Validation --------------------------------------------------------- */
+.Input--error,
+.Select--error {
+  border-color: rgba(var(--c-red), 1);
+}
+
+.FormField--error .FormLabel {
+  color: rgba(var(--c-red), 1);
+}
+
+.FormError {
+  color: rgba(var(--c-red), 1);
+}
+
+.RegPanel--terms-error span {
+  color: rgba(var(--c-red), 1);
+}
+
+/* --- Confirmation modal -------------------------------------------------- */
+.Modal--backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.Modal {
+  width: 100%;
+  max-width: 32rem;
+  padding: 2.5rem;
+  background: rgba(var(--c-white), 1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.Modal--title {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: rgba(var(--c-black), 1);
+  margin: 0.25rem 0 1rem;
+}
+
+.Modal--hint {
+  font-size: 0.8125rem;
+  color: rgba(var(--c-text-grey), 0.7);
+}
+
+.Modal--actions {
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .RegForm {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .RegPanel--row {
     grid-template-columns: 1fr;
   }
 }

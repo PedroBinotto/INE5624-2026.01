@@ -47,6 +47,30 @@ export default function Accessibility() {
               <p>Thursday evening 5:30 –8:00 p.m. (for adults)</p>
               <p></p>
               <p>Free entrance, wheelchair accessible</p>
+
+              <h2>Per-person visitation cost</h2>
+              <p>General admission to the permanent exhibitions is free of charge. Optional
+              guided formats are billed per person:</p>
+              <p>
+                Guided tour (per person): CHF 12.–<br />
+                Reduced — students, AHV/IV, with a valid card: CHF 8.–<br />
+                Children under 12 (accompanied): free<br />
+                School classes (per pupil): CHF 5.–<br />
+                Family ticket (2 adults + children): CHF 30.–
+              </p>
+              <p>Groups of 10 or more qualify for the reduced rate. Tickets can be paid by
+              card or TWINT at the front desk.</p>
+
+              <h2>Accessibility information</h2>
+              <p>The museum is fully wheelchair accessible. A step-free entrance leads to
+              lifts serving every exhibition floor, and accessible toilets are available on
+              each level.</p>
+              <p>Wheelchairs and folding stools can be borrowed free of charge at the front
+              desk. Assistance dogs are welcome throughout the building, and large-print
+              floor plans are available on request.</p>
+              <p>Two accessible parking spaces are located directly in front of the entrance.
+              For visits requiring additional support, please
+              {' '}<Link className="Link size-small" to="/registration-for-groups">let us know in advance</Link>.</p>
             </aside>
           </div>
         </div>
